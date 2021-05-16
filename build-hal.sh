@@ -2,6 +2,8 @@
 source hadk.env
 cd $ANDROID_ROOT
 source build/envsetup.sh 2>&1
+virtualenv --python 2.7 ~/python27
+source ~/python27/bin/activate
 breakfast $DEVICE
 
 echo "clean .repo folder"
