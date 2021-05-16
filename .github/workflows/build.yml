@@ -35,6 +35,10 @@ jobs:
         libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev \
         qemu-user-static qemu-system-arm e2fsprogs simg2img \
         libtinfo5 libncurses5 gzip virtualenv
+        echo "::set-env name=VENDOR::$(echo $VENDOR)"
+        echo "::set-env name=DEVICE::$(echo $DEVICE)"
+        echo "::set-env name=ANDROID_ROOT::$(echo $ANDROID_ROOT)"
+        echo "::set-env name=SAILFISH_SKD_VERSION::$(echo $SAILFISH_SKD_VERSION)"
 
 
     - name: Download repo bin file
@@ -48,10 +52,6 @@ jobs:
     - name: Downloading source code
       run: |
         source hadk.env
-        echo "::set-env name=VENDOR::$(echo $VENDOR)"
-        echo "::set-env name=DEVICE::$(echo $DEVICE)"
-        echo "::set-env name=ANDROID_ROOT::$(echo $ANDROID_ROOT)"
-        echo "::set-env name=SAILFISH_SKD_VERSION::$(echo $SAILFISH_SKD_VERSION)"
         mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
         repo init -u git://github.com/mer-hybris/android.git -b hybris-14.1 --depth=1
@@ -81,6 +81,7 @@ jobs:
 
     - name: Build dhd in container
       run: |
+        source hadk.env
         echo "clean more folders"
         rm -rf $ANDROID_ROOT/prebuilts $ANDROID_ROOT/external/chromium* $ANDROID_ROOT/tools/external/gradle $ANDROID_ROOT/packages
         rm -rf $ANDROID_ROOT/out/build-lineage_vince.ninja
