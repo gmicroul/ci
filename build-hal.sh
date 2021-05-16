@@ -8,7 +8,7 @@ echo "clean .repo folder"
 rm -rf $ANDROID_ROOT/.repo
 
 # hack for droidmedia
-echo 'DROIDMEDIA_32 := true' >> external/droidmedia/env.mk
+#echo 'DROIDMEDIA_32 := true' >> external/droidmedia/env.mk
 echo 'FORCE_HAL:=1' >> external/droidmedia/env.mk
 echo 'MINIMEDIA_AUDIOPOLICYSERVICE_ENABLE := 1' >> external/droidmedia/env.mk
 echo 'AUDIOPOLICYSERVICE_ENABLE := 1' >> external/droidmedia/env.mk
