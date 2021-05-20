@@ -85,10 +85,11 @@ jobs:
         echo "clean more folders"
         rm -rf $ANDROID_ROOT/prebuilts $ANDROID_ROOT/external/chromium* $ANDROID_ROOT/tools/external/gradle $ANDROID_ROOT/packages
         rm -rf $ANDROID_ROOT/out/build-lineage_vince.ninja
+        rm -rf $ANDROID_ROOT/frameworks
         chmod +x build-rpm.sh
         sudo docker images|grep -v REPOSITORY|awk '{print $3}'|xargs docker rmi
         sudo docker pull coderus/sailfishos-platform-sdk-aarch64:$SAILFISH_SKD_VERSION
-        sudo docker run -v /home/runner/work:/home/nemo/work coderus/sailfishos-platform-sdk:$SAILFISH_SKD_VERSION /bin/sh /home/nemo/work/ci/ci/build-rpm.sh
+        sudo docker run -v /home/runner/work:/home/nemo/work coderus/sailfishos-platform-sdk-aarch64:$SAILFISH_SKD_VERSION /bin/sh /home/nemo/work/ci/ci/build-rpm.sh
       shell: bash
 
     - name: Check free disk
