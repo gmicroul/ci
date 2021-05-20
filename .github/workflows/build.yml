@@ -38,7 +38,7 @@ jobs:
         echo "::set-env name=VENDOR::$(echo $VENDOR)"
         echo "::set-env name=DEVICE::$(echo $DEVICE)"
         echo "::set-env name=ANDROID_ROOT::$(echo $ANDROID_ROOT)"
-        echo "::set-env name=SAILFISH_SKD_VERSION::$(echo $SAILFISH_SKD_VERSION)"
+        echo "::set-env name=SAILFISH_VERSION::$(echo $SAILFISH_VERSION)"
 
 
     - name: Download repo bin file
@@ -88,8 +88,8 @@ jobs:
         rm -rf $ANDROID_ROOT/frameworks
         chmod +x build-rpm.sh
         sudo docker images|grep -v REPOSITORY|awk '{print $3}'|xargs docker rmi
-        sudo docker pull coderus/sailfishos-platform-sdk-aarch64:$SAILFISH_SKD_VERSION
-        sudo docker run -v /home/runner/work:/home/nemo/work coderus/sailfishos-platform-sdk-aarch64:$SAILFISH_SKD_VERSION /bin/sh /home/nemo/work/ci/ci/build-rpm.sh
+        sudo docker pull coderus/sailfishos-platform-sdk-aarch64:$SAILFISH_VERSION
+        sudo docker run -v /home/runner/work:/home/nemo/work coderus/sailfishos-platform-sdk-aarch64:$SAILFISH_VERSION /bin/sh /home/nemo/work/ci/ci/build-rpm.sh
       shell: bash
 
     - name: Check free disk

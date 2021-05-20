@@ -22,11 +22,6 @@ sdk-assistant list
 
 cd $ANDROID_ROOT
 rpm/dhd/helpers/build_packages.sh -d
-
-
-# we do not build gst-droid and gmp-droid, skip them
-sed -i 's/buildmw -u\ \"https\:\/\/github.com\/sailfishos\/gst-droid.git\"/echo skip/g' rpm/dhd/helpers/build_packages.sh 
-sed -i 's/buildmw -u\ \"https\:\/\/github.com\/sailfishos\/gmp-droid.git\"/echo skip/g' rpm/dhd/helpers/build_packages.sh 
 rpm/dhd/helpers/build_packages.sh -g
 
 cat /home/nemo/work/hadk_14.1/droid-hal-$DEVICE.log
