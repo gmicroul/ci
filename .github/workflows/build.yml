@@ -22,7 +22,7 @@ jobs:
       DEVICE: vince
       VENDOR: xiaomi
       ANDROID_ROOT: /home/runner/work/ci/ci/hadk_14.1/
-      SAILFISH_SDK_VERSION: 4.5.0.16
+      SAILFISH_SDK_VERSION: 5.0.0.13
 
     steps:
     - name: Maximize build space
