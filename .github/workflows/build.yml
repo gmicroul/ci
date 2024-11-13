@@ -21,12 +21,12 @@ jobs:
     env:
       DEVICE: vince
       VENDOR: xiaomi
-      ANDROID_ROOT: /home/runner/work/hadk_14.1/
-      SAILFISH_SDK_VERSION: 5.0.0.21
+      ANDROID_ROOT: /home/runner/work/ci/ci/hadk_14.1/
+      SAILFISH_SDK_VERSION: 4.5.0.16
 
     steps:
     - name: Maximize build space
-      uses: gmicroul/maximize-build-space@main
+      uses: easimon/maximize-build-space@master
       with:
         root-reserve-mb: 20480
         swap-size-mb: 1024
@@ -36,7 +36,7 @@ jobs:
         remove-docker-images: 'true'
 
     - name: Checkout
-      uses: gmicroul/actions-checkout@main
+      uses: actions/checkout@master
         
     - name: Initialization environment
       run: |
@@ -56,8 +56,8 @@ jobs:
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
-        git config --global user.name "gmicroul"
-        git config --global user.email "microul@gmail.com"
+        git config --global user.name "BirdZhang"
+        git config --global user.email "0312birdzhang@gmail.com"
 
     - name: Downloading source code
       run: |
@@ -70,7 +70,7 @@ jobs:
     - name: Clone device spec source
       run: |
         source hadk.env
-        git clone https://github.com/Sailfish-On-Vince/device_xiaomi_vince.git $ANDROID_ROOT/device/xiaomi/vince --depth=1
+        git clone https://github.com/Sailfish-On-Vince/device_xiaomi_vince.git $ANDROID_ROOT/device/xiaomi/vince --depth=1 
         git clone https://github.com/Sailfish-On-Vince/vendor_xiaomi_vince.git $ANDROID_ROOT/vendor/xiaomi/vince --depth=1
         git clone https://github.com/Sailfish-On-Vince/Xiaomi_Kernel_OpenSource.git $ANDROID_ROOT/kernel/xiaomi/msm8953 --depth=1
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
@@ -88,30 +88,30 @@ jobs:
         bash build-hal.sh
       shell: bash
 
-    # - name: Build dhd in container
-    #   run: |
-    #     echo "clean more folders"
-    #     rm -rf $ANDROID_ROOT/prebuilts $ANDROID_ROOT/external/chromium* $ANDROID_ROOT/tools/external/gradle $ANDROID_ROOT/packages
-    #     rm -rf $ANDROID_ROOT/out/build-lineage_vince.ninja
-    #     chmod +x build-rpm.sh
-    #     sudo docker pull coderus/sailfishos-platform-sdk:$SAILFISH_SDK_VERSION
-    #     sudo docker run -v /home/runner/work:/home/mersdk/work coderus/sailfishos-platform-sdk:$SAILFISH_SDK_VERSION /bin/sh /home/mersdk/work/ci/ci/build-rpm.sh
-    #   shell: bash
+    - name: Build dhd in container
+      run: |
+        echo "clean more folders"
+        rm -rf $ANDROID_ROOT/prebuilts $ANDROID_ROOT/external/chromium* $ANDROID_ROOT/tools $ANDROID_ROOT/packages
+        rm -rf $ANDROID_ROOT/out/build-lineage_vince.ninja
+        chmod +x build-rpm.sh
+        sudo docker pull coderus/sailfishos-platform-sdk:$SAILFISH_SDK_VERSION
+        sudo docker run -v /home/runner/work:/home/mersdk/work coderus/sailfishos-platform-sdk:$SAILFISH_SDK_VERSION /bin/sh /home/mersdk/work/ci/ci/build-rpm.sh
+      shell: bash
 
-    # - name: Check free disk
-    #   if: failure()
-    #   run: |
-    #     df -h
-    #   shell: bash
+    - name: Check free disk
+      if: failure()
+      run: |
+        df -h
+      shell: bash
 
     - name : Upload boot image
-      uses: gmicroul/actions-upload-artifact@main
+      uses: actions/upload-artifact@master
       with:
-        name: hybris-boot.img
+        name: hybris-boot.img.zip
         path: ${{env.ANDROID_ROOT}}/out/target/product/${{env.DEVICE}}/hybris-boot.img
 
-    # - name : Upload droid-local-repo
-    #   uses: gmicroul/actions-upload-artifact@main
-    #   with:
-    #     name: droid-local-repo
-    #     path: ${{env.ANDROID_ROOT}}/droid-local-repo
+    - name : Upload droid-local-repo
+      uses: actions/upload-artifact@master
+      with:
+        name: droid-local-repo.zip
+        path: ${{env.ANDROID_ROOT}}/droid-local-repo
