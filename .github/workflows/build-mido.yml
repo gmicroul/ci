@@ -70,14 +70,14 @@ jobs:
     - name: Clone device spec source
       run: |
         source hadk.env
-        git clone https://github.com/Sailfish-On-Vince/device_xiaomi_mido.git $ANDROID_ROOT/device/xiaomi/mido --depth=1 
-        git clone https://github.com/Sailfish-On-Vince/vendor_xiaomi_mido.git $ANDROID_ROOT/vendor/xiaomi/mido --depth=1
-        git clone https://github.com/Sailfish-On-Vince/Xiaomi_Kernel_OpenSource.git $ANDROID_ROOT/kernel/xiaomi/msm8953 --depth=1
+        git clone https://github.com/piggz/android_device_xiaomi_mido.git $ANDROID_ROOT/device/xiaomi/mido --depth=1 
+        git clone https://github.com/itsshashanksp/vendor_xiaomi-mido.git $ANDROID_ROOT/vendor/xiaomi/mido --depth=1
+        git clone https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git $ANDROID_ROOT/kernel/xiaomi/msm8953 --depth=1
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
-        git clone https://github.com/Sailfish-On-Vince/hybris-boot.git $ANDROID_ROOT/hybris/hybris-boot
-        git clone --recurse-submodules https://github.com/Sailfish-On-Vince/droid-hal-mido.git $ANDROID_ROOT/rpm 
-        git clone --recurse-submodules https://github.com/Sailfish-On-Vince/droid-config-mido.git $ANDROID_ROOT/hybris/droid-configs
-        git clone --recurse-submodules https://github.com/Sailfish-On-Vince/droid-hal-version-mido.git $ANDROID_ROOT/hybris/droid-hal-version-mido
+        git clone https://github.com/piggz/hybris-boot.git $ANDROID_ROOT/hybris/hybris-boot
+        git clone --recurse-submodules https://github.com/piggz/droid-hal-mido.git $ANDROID_ROOT/rpm 
+        git clone --recurse-submodules https://github.com/piggz/droid-config-mido.git $ANDROID_ROOT/hybris/droid-configs
+        git clone --recurse-submodules https://github.com/piggz/droid-hal-version-mido.git $ANDROID_ROOT/hybris/droid-hal-version-mido
         rm -rf $ANDROID_ROOT/external/droidmedia
         git clone https://github.com/sailfishos/droidmedia.git $ANDROID_ROOT/external/droidmedia
 
