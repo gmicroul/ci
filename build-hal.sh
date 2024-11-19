@@ -22,5 +22,5 @@ echo 'AUDIOPOLICYSERVICE_ENABLE := 1' >> external/droidmedia/env.mk
 
 make -j$(nproc --all) hybris-hal droidmedia
 
-# Add vince lost libs
-cp device/xiaomi/vince/lostlibs/*.so out/target/product/vince/system/lib/
+# Add mido lost libs
+cp device/xiaomi/mido/lostlibs/*.so out/target/product/mido/system/lib/
