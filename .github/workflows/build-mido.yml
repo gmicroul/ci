@@ -105,13 +105,13 @@ jobs:
       shell: bash
 
     - name : Upload boot image
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: hybris-boot.img.zip
         path: ${{env.ANDROID_ROOT}}/out/target/product/${{env.DEVICE}}/hybris-boot.img
 
     - name : Upload droid-local-repo
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: droid-local-repo.zip
         path: ${{env.ANDROID_ROOT}}/droid-local-repo
