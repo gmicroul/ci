@@ -4,7 +4,7 @@
 # Author: 0312birdzhang
 #=================================================
 
-name: Build SailfishOS dhd
+name: Build mido SailfishOS dhd
 
 on: 
   release:
@@ -56,8 +56,8 @@ jobs:
         mkdir -p ~/bin
         wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
         chmod +x ~/bin/repo
-        git config --global user.name "BirdZhang"
-        git config --global user.email "0312birdzhang@gmail.com"
+        #git config --global user.name "BirdZhang"
+        #git config --global user.email "0312birdzhang@gmail.com"
 
     - name: Downloading source code
       run: |
