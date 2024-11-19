@@ -108,8 +108,8 @@ jobs:
     - name : Upload boot image
       uses: gmicroul/actions-upload-artifact@main
       with:
-        name: hybris-boot.img.zip
-        path: ${{env.ANDROID_ROOT}}/out/target/product/${{env.DEVICE}}/hybris-boot.img
+        name: mido-sailfish-5.0.zip
+        path: ${{env.ANDROID_ROOT}}/out/target/product/${{env.DEVICE}}/*.zip
 
     - name : Upload droid-local-repo
       uses: gmicroul/actions-upload-artifact@main
