@@ -36,7 +36,7 @@ jobs:
         remove-docker-images: 'true'
 
     - name: Checkout
-      uses: gmicroul/checkout@master
+      uses: gmicroul/checkout@main
         
     - name: Initialization environment
       run: |
