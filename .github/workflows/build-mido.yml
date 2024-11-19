@@ -26,7 +26,7 @@ jobs:
 
     steps:
     - name: Maximize build disk space
-      uses: easimon/maximize-build-space@v10
+      uses: easimon/maximize-build-space@v3
       with:
         root-reserve-mb: 20480
         swap-size-mb: 1024
@@ -36,7 +36,7 @@ jobs:
         remove-docker-images: 'true'
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2.311.0
         
     - name: Initialization environment
       run: |
@@ -105,13 +105,13 @@ jobs:
       shell: bash
 
     - name : Upload boot image
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4.4.3
       with:
         name: hybris-boot.img.zip
         path: ${{env.ANDROID_ROOT}}/out/target/product/${{env.DEVICE}}/hybris-boot.img
 
     - name : Upload droid-local-repo
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4.4.3
       with:
         name: droid-local-repo.zip
         path: ${{env.ANDROID_ROOT}}/droid-local-repo
