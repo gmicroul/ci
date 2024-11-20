@@ -72,7 +72,7 @@ jobs:
         source hadk.env
         git clone https://gitlab.com/the-muppets/proprietary_vendor_xiaomi.git $ANDROID_ROOT/vendor/xiaomi/mido --depth=1 
         #git clone -b r11 https://github.com/gmicroul/vendor_xiaomi-mido.git $ANDROID_ROOT/vendor/xiaomi/mido --depth=1
-        git clone -b cm-14.1 https://github.com/Android-Jerry/device_xiaomi_mido-pe1.git $ANDROID_ROOT/device/xiaomi/mido --depth=1
+        git clone -b cm-14.1 https://github.com/LineageOS/android_device_xiaomi_mido.git $ANDROID_ROOT/device/xiaomi/mido --depth=1
         git clone https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git $ANDROID_ROOT/kernel/xiaomi/msm8953 --depth=1
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
         git clone https://github.com/piggz/hybris-boot.git $ANDROID_ROOT/hybris/hybris-boot
