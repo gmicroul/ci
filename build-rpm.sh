@@ -33,7 +33,7 @@ cp /home/mersdk/work/ci/ci/helpers/*.sh $ANDROID_ROOT/rpm/dhd/helpers/
 chmod +x $ANDROID_ROOT/rpm/dhd/helpers/*.sh
 
 # dhc for 64bit
-rm $ANDROID_ROOT/hybris/droid-configs/sparse/usr/bin/droid/droid-hal-startup.sh
+# rm $ANDROID_ROOT/hybris/droid-configs/sparse/usr/bin/droid/droid-hal-startup.sh
 
 cd $ANDROID_ROOT/hybris/droid-hal-version-mido/droid-hal-version
 git pull origin master
