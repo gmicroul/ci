@@ -6,12 +6,14 @@
 
 name: Build SailfishOS dhd
 
-on: 
-  release:
-    types: [published]
-  push:
-    branches: 
-      - mido
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      set_example:
+        description: "oneplus"
+        required: true
+        default: "mido"
 
 permissions:
   contents: write
