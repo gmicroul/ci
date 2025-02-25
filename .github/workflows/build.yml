@@ -19,7 +19,7 @@ permissions:
 jobs:
 
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-20.04-arm
 
     env:
       DEVICE: vince
@@ -57,10 +57,10 @@ jobs:
       uses: actions/checkout@master
 
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
-      with:
-        platforms: all
+    #- name: Set up QEMU
+    #  uses: docker/setup-qemu-action@v2
+    #  with:
+    #    platforms: all
 
     - name: Initialization environment
       run: |
