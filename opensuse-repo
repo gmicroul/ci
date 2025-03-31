@@ -1,0 +1,4 @@
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/distribution/leap/15.5/repo/oss/ openSUSE-15.5-Oss
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/distribution/leap/15.5/repo/non-oss/ openSUSE-15.5-Non-Oss
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/update/leap/15.5/oss/ openSUSE-15.5-Update-Oss
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/update/leap/15.5/non-oss/ openSUSE-15.5-Update-Non-Oss
